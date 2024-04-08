@@ -14,4 +14,4 @@ Projeto de criação de uma calculadora criada para a disciplina de Desenvolvime
 
 # Link #
 
-Caso queria testar, é só clicar (aqui!)[https://calcvuejsnathan.netlify.app/]
+Caso queria testar, é só clicar [aqui!](https://calcvuejsnathan.netlify.app/)
