@@ -11,3 +11,7 @@ Projeto de criação de uma calculadora criada para a disciplina de Desenvolvime
 - Cálculos com números decimais 🔢
 - Limpar o visor 🔠
 - Calcular o resultado 🟰
+
+# Link #
+
+Caso queria testar, é só clicar (aqui!)[https://calcvuejsnathan.netlify.app/]
