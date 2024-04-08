@@ -1,8 +1,8 @@
-# 🔢 Trabalho Desenvolvimento Web II 🔢
+# 🧮 Trabalho Desenvolvimento Web II 🧮
 
 Projeto de criação de uma calculadora criada para a disciplina de Desenvolvimento Web II do curso de Desenvolvimento de Software Multiplataforma da Fatec Franca utiliznado Vue.js
 
-# Funcionalidades
+# 🧮 Funcionalidades 🧮
 
 - Adição ➕
 - Subtração ➖
