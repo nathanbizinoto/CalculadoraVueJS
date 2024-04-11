@@ -1,4 +1,3 @@
-
 const { createApp } = Vue;
 
 createApp({
@@ -8,7 +7,7 @@ createApp({
             valor: '',
             numeroAnterior: 0,
             numeroAtual: 0,
-            operador: ''
+            operador: null
         }
     },
     methods: {
@@ -38,35 +37,51 @@ createApp({
             }
         },
         tratarOperador(botao) {
-            if (botao === '*') {
-                this.display = 'x';
-            } else {
-                this.display = botao;
+            if (this.valor !== '') {
+                this.numeroAnterior = parseFloat(this.valor);
+                this.valor = '';
+                this.numeroAtual = 0; // Reset para nova entrada
             }
             this.operador = botao;
-            this.numeroAnterior = parseFloat(this.valor);
-            this.valor = '';
+            this.display = (botao === '*') ? 'x' : botao;
         },
         tratarDecimal() {
-            if (!this.display.includes('.')) {
-                this.display += '.';
+            if (!this.valor.includes('.')) {
                 this.valor += '.';
+                this.display = this.valor;
             }
         },
         tratarIgual() {
-            if (this.operador === '/') {
-                this.valor = this.numeroAnterior / parseFloat(this.valor);
-            } else if (this.operador === '*') {
-                this.valor = this.numeroAnterior * parseFloat(this.valor);
-            } else if (this.operador === '-') {
-                this.valor = this.numeroAnterior - parseFloat(this.valor);
-            } else if (this.operador === '+') {
-                this.valor = this.numeroAnterior + parseFloat(this.valor);
+            this.numeroAtual = parseFloat(this.valor);
+            if (this.operador !== null) {
+                switch (this.operador) {
+                    case '+':
+                        this.valor = this.numeroAnterior + this.numeroAtual;
+                        break;
+                    case '-':
+                        this.valor = this.numeroAnterior - this.numeroAtual;
+                        break;
+                    case '*':
+                        this.valor = this.numeroAnterior * this.numeroAtual;
+                        break;
+                    case '/':
+                        if (this.numeroAtual !== 0) {
+                            this.valor = this.numeroAnterior / this.numeroAtual;
+                        } else {
+                            this.valor = 'Erro - Divisão por zero';
+                        }
+                        break;
+                }
+                this.display = this.valor.toString();
+                this.operador = null; // Reseta o operador
             }
-            this.display = this.valor.toString();
         },
         tratarNumero(botao) {
-            if (this.display === '0' || this.operador !== '') {
+            if (this.operador !== null) {
+                this.valor = '';
+                this.operador = null;
+            }
+            if (this.display === '0' || this.valor === '') {
                 this.display = botao.toString();
             } else {
                 this.display += botao.toString();
@@ -77,7 +92,7 @@ createApp({
             this.display = '0';
             this.numeroAnterior = 0;
             this.numeroAtual = 0;
-            this.operador = '';
+            this.operador = null;
             this.valor = '';
         }
     }
